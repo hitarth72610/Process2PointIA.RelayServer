@@ -7,13 +7,13 @@ var builder = WebApplication.CreateBuilder(args);
 // CLOUD + LOCAL COMPATIBLE PORT CONFIGURATION
 // =============================================
 
-// Render / Cloud provides PORT environment variable.
-// If not present (local run), fallback to 5190.
+// Render (and most cloud providers) provide PORT environment variable.
+// If not present (local run), fallback to 8080.
 
-var port = Environment.GetEnvironmentVariable("PORT") ?? "5190";
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
 
 // Listen on all network interfaces (0.0.0.0)
-// Required for cloud + external access
+// Required for Docker + Cloud hosting
 builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
 
 var app = builder.Build();
@@ -25,7 +25,7 @@ var app = builder.Build();
 app.MapGet("/", () => Results.Ok("Relay Server Online"));
 
 // =============================================
-// BOT ? RELAY (Send Status)
+// BOT → RELAY (Send Status)
 // =============================================
 
 app.MapPost("/api/bots/{botId}/status", (string botId, BotState state) =>
@@ -36,7 +36,7 @@ app.MapPost("/api/bots/{botId}/status", (string botId, BotState state) =>
 });
 
 // =============================================
-// CONTROLLER ? RELAY (Get Status)
+// CONTROLLER → RELAY (Get Status)
 // =============================================
 
 app.MapGet("/api/bots/{botId}/status", (string botId) =>
@@ -46,7 +46,7 @@ app.MapGet("/api/bots/{botId}/status", (string botId) =>
 });
 
 // =============================================
-// CONTROLLER ? RELAY (Send Command)
+// CONTROLLER → RELAY (Send Command)
 // =============================================
 
 app.MapPost("/api/bots/{botId}/command/{command}", (string botId, string command) =>
@@ -56,7 +56,7 @@ app.MapPost("/api/bots/{botId}/command/{command}", (string botId, string command
 });
 
 // =============================================
-// BOT ? RELAY (Fetch Command)
+// BOT → RELAY (Fetch Command)
 // =============================================
 
 app.MapGet("/api/bots/{botId}/command", (string botId) =>
