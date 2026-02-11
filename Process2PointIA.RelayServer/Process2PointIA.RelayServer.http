@@ -1,0 +1,6 @@
+@Process2PointIA.RelayServer_HostAddress = http://localhost:5190
+
+GET {{Process2PointIA.RelayServer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

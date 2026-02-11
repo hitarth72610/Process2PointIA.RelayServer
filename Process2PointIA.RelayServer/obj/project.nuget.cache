@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "REp3IsTiP9E=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ihita\\source\\repos\\Process2PointIA.AgentProgressTracker\\Process2PointIA.RelayServer\\Process2PointIA.RelayServer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ihita\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.1\\microsoft.aspnetcore.openapi.10.0.1.nupkg.sha512",
+    "C:\\Users\\ihita\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
